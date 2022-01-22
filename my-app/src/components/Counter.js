@@ -1,32 +1,28 @@
 import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../redux/actions";
-import { bindActionCreators } from "redux";
+import { useDispatch } from "react-redux";
+import { inc, res, dec, ran } from "../redux/actions";
+import { useSelector } from "react-redux";
 
-function Counter({ counter, inc, res, dec, ran }) {
+function Counter() {
+  const counter = useSelector((state) => state.value);
+  const dispatch = useDispatch();
   return (
     <div>
       <h1>Counter: {counter}</h1>
-      <button onClick={inc} className="btn btn-primary">
+      <button onClick={() => dispatch(inc())} className="btn btn-primary">
         Increment +
       </button>
-      <button onClick={res} className="btn btn-info">
-        Restart -
+      <button onClick={() => dispatch(res())} className="btn btn-info">
+        Restart 0
       </button>
-      <button onClick={dec} className="btn btn-danger">
-        Decrement 0
+      <button onClick={() => dispatch(dec())} className="btn btn-danger">
+        Decrement -
       </button>
-      <button onClick={ran} className="btn btn-success">
+      <button onClick={() => dispatch(ran())} className="btn btn-success">
         Random #
       </button>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    counter: state.value,
-  };
-};
-
-export default connect(mapStateToProps, actions)(Counter);
+export default Counter;
