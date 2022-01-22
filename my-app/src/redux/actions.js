@@ -1,10 +1,12 @@
 export const inc = () => ({ type: "INCREMENT" });
 export const dec = () => ({ type: "DECREMENT" });
 export const res = () => ({ type: "RESTART" });
-export const ran = (randomValueOne, randomValueTwo, randomValueTHree) => ({
+export const ran = () => ({
   type: "RANDOM",
   payload:
-    randomValueOne * randomValueTwo ** 2 +
-    randomValueTHree * randomValueTwo ** 2 +
-    randomValueOne * randomValueTHree ** 2,
+    Math.floor(Math.random() * 10) ** 2 +
+    Math.floor(Math.random() * 10) ** 2 +
+    Math.floor(Math.random() * 10) ** 2 -
+    Math.floor(Math.random() * 10) ** 2 +
+    Math.floor(Math.random() * 10) ** 3,
 });
