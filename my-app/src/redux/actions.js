@@ -1,12 +1,18 @@
-export const inc = () => ({ type: "INCREMENT" });
-export const dec = () => ({ type: "DECREMENT" });
-export const res = () => ({ type: "RESTART" });
-export const ran = () => ({
-  type: "RANDOM",
-  payload:
-    Math.floor(Math.random() * 10) ** 2 +
-    Math.floor(Math.random() * 10) ** 2 +
-    Math.floor(Math.random() * 10) ** 2 -
-    Math.floor(Math.random() * 10) ** 2 +
-    Math.floor(Math.random() * 10) ** 3,
-});
+export const newsFetching = () => {
+  return {
+    type: "NEWS_FETCHING",
+  };
+};
+
+export const newsFetched = (news) => {
+  return {
+    type: "NEWS_FETCHED",
+    payload: news,
+  };
+};
+
+export const newsFetchingError = () => {
+  return {
+    type: "NEWS_FETCHING_ERROR",
+  };
+};

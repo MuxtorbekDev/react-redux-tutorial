@@ -1,26 +1,26 @@
-const initialState = { value: 0 };
+const initialState = {
+  news: [],
+  newsLoadingStatus: "sam",
+  filters: [],
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case "NEWS_FETCHING":
       return {
         ...state,
-        value: state.value + 1,
+        newsLoadingStatus: "loading",
       };
-    case "DECREMENT":
+    case "NEWS_FETCHED":
       return {
         ...state,
-        value: state.value - 1,
+        news: action.payload,
+        newsLoadingStatus: "sam",
       };
-    case "RESTART":
+    case "NEWS_FETCHING_ERROR":
       return {
         ...state,
-        value: (state.value = 0),
-      };
-    case "RANDOM":
-      return {
-        ...state,
-        value: action.payload,
+        newsLoadingStatus: "error",
       };
     default:
       return state;
